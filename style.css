@@ -28,24 +28,18 @@ main {
   border-radius: 1rem;
   overflow: hidden;
   max-width: 90vw;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.card-img-container {
+  background-color: var(--soft-violet-accent);
 }
 
 .card-img {
   width: 100%;
-  object-fit: contain;
-  position: relative;
-}
-
-.card-img::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  mix-blend-mode: multiply;
 }
 
 .card-info {
@@ -59,14 +53,12 @@ main {
 }
 
 .card-title {
-  grid-area: title;
   color: var(--white);
   margin: 0;
   margin-bottom: 1rem;
 }
 
 .card-desc {
-  grid-area: desc;
   margin: 0;
   margin-bottom: 2rem;
 }
@@ -79,7 +71,6 @@ main {
 }
 
 .card-item {
-  grid-area: item;
   margin-bottom: 1rem;
 }
 
@@ -104,15 +95,17 @@ main {
 
 @media (min-width: 40rem) {
   main {
-    flex-flow: row-reverse nowrap;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1280px;
   }
-
-  .card-img {
-    width: 50%;
-    object-fit: fill;
+  .card-img-container {
+    grid-column: 2/3;
+    grid-row: 1;
   }
 
   .card-info {
+    grid-column: 1/2;
+    grid-row: 1;
     text-align: left;
     padding: 4rem;
   }
